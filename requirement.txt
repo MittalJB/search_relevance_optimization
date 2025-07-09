@@ -1,0 +1,7 @@
+xgboost
+pandas
+nltk
+sentence-transformers
+pyspark
+scikit-learn
+flask 
