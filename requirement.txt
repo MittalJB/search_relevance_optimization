@@ -1,7 +1,29 @@
+# Core ML and NLP
 xgboost
 pandas
 nltk
 sentence-transformers
-pyspark
 scikit-learn
-flask 
+pyspark
+
+# Flask app (for model serving)
+flask
+
+# Semantic Search & Vector DB
+elasticsearch
+faiss-cpu                    # If you're using FAISS instead of Elasticsearch
+transformers                 # For embedding models or RAG
+
+# Google Cloud tools
+google-cloud-bigquery
+google-cloud-storage
+google-cloud-aiplatform     # Vertex AI integration
+google-auth
+google-api-python-client
+
+# Vertex AI Pipelines
+kfp                         # Kubeflow Pipelines (used in Vertex AI)
+
+# CI/CD and Docker
+python-dotenv               # For env variables
+
