@@ -1,16 +1,35 @@
-steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/your-project-id/your-app', '.']
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/your-project-id/your-app']
-images: ['gcr.io/your-project-id/your-app']
 name: GCP Build and Deploy
+
 on:
   push:
-    branches: [ main ]
+    branches: [main]
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - run: gcloud builds submit --project=your-project-id
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+        with:
+          project_id: project-id
+
+      - name: Build and submit image to Google Cloud Build
+        run: |
+          gcloud builds submit --tag gcr.io/project-id/my-app .
+          
+      - name: Deploy to Cloud Run (optional)
+        run: |
+          gcloud run deploy my-app \
+            --image gcr.io/project-id/your-app \
+            --platform managed \
+            --region us-central1 \
+            --allow-unauthenticated
