@@ -11,7 +11,7 @@ spark = SparkSession.builder \
 # Load BigQuery table (replace with your project/dataset/table)
 df = spark.read \
   .format("bigquery") \
-  .option("table", "your-project-id.dataset_id.table_id") \
+  .option("table", "search123_project-id.seach123_dataset_id.seach123_table_id") \
   .load()
 
 df.show()
