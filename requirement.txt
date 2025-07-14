@@ -5,6 +5,17 @@ nltk
 sentence-transformers
 scikit-learn
 pyspark
+flask
+elasticsearch
+faiss-cpu
+transformers
+google-cloud-bigquery
+google-cloud-storage
+google-cloud-aiplatform
+google-auth
+google-api-python-client
+kfp
+python-dotenv
 
 # Flask app (for model serving)
 flask
